@@ -11,7 +11,7 @@ function parseCourses() {
             var db = firebase.firestore();
             // Add parse each entry in JSON to the database
             for (i = 0; i < courseEntries.length; i++) {
-                db.collection("college").doc("JHU").collection("semester").doc(courseEntries[i].Term).collection("class").doc(courseEntries[i].OfferingName).update({
+                db.collection("college").doc("JHU").collection("semester").doc(courseEntries[i].Term).collection("class").doc(courseEntries[i].OfferingName).set({
                     courseName: courseEntries[i].Title
                 })
                     .then(function() {
