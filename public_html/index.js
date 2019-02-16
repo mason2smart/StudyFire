@@ -1,6 +1,4 @@
 //init materialize tabs
-var instance = M.Tabs.init(el, options);
-
 var newUser = Boolean(false);
 
 function consoleLog(name) {
@@ -38,6 +36,20 @@ function validateRegVal(val1, val2) {
 	if (val1 != null && val1 != "" && val2 != null && val2 != "") {
 		return val1 === val2;
 	} else return -1;
+}
+
+function submitCreds() { //login
+	var email = document.getElementById('email').value;
+	var password = document.getElementById('password').value;
+	firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+		// Handle Errors here.
+		var errorCode = error.code;
+		var errorMessage = error.message;
+		//materialize toast
+		M.toast({
+			html: error.message
+		});
+	});
 }
 
 function valRegFormComplete() { //validate form filled out
