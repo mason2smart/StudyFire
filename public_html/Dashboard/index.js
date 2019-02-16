@@ -9,26 +9,26 @@ var docPath;
 firebase.auth().onAuthStateChanged(function (user) {
 	if (user) {
 		// User is signed in.
-		if (user.displayName != "null" && user.displayName != null) {
-			displayName = user.displayName;
-		}
+		displayName = user.displayName;
 		docPath = firestore.collection("users").doc(user.uid);
 		uid = user.uid;
-		var email = user.email;
+		email = user.email;
 		var emailVerified = user.emailVerified;
 		var photoURL = user.photoURL;
 		var providerData = user.providerData;
+
+		dispUserInfo(); //display user info on page
 
 		consoleLog("LOGGED IN FIRED AUTH LISTENER");
 		//toast welcome message
 		M.toast({
 			html: "Welcome " + displayName
 		});
-			window.location.replace('./Dashboard/');
 
 	} else {
 		// User is signed out.
 		uid = null;
+		email = null;
 		displayName = null;
 		docPath = null;
 		window.location.replace('../');
