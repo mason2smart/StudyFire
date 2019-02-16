@@ -182,6 +182,16 @@ var storageRef = firebase.storage().ref(uid + '/images/');
 	});
 	//functions.storage.object().onFinalize((object) => {});
 }
+function newPicUserInfo() { //store that a profile pic has been uploaded
+			firestore.collection('users').doc(uid).get().then(function (doc) {
+			if (doc.exists) { 
+				if (hasNewProfPic) {
+					firestore.collection("users").doc(uid).update({
+						profPic: Boolean(true)
+				})
+					consoleLog("new profpic submitted to user profile")
+}}});}
+
 
 $(function () {
 	$("#profpicLink").on('click', function (e) {
