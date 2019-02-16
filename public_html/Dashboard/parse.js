@@ -2,7 +2,7 @@ function parseCourses() {
 
     // loading JSON file
     var client = new XMLHttpRequest();
-    client.open('GET', './whitingSchoolOfEngineering.json');
+    client.open('GET', './current-en.json');
     client.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var courseEntries = JSON.parse(this.responseText);
@@ -15,7 +15,7 @@ function parseCourses() {
                     courseName: courseEntries[i].Title
                 })
                     .then(function() {
-                        console.log("Document successfully written!");
+                        console.log("Document successfully written!" + i);
                     })
                     .catch(function(error) {
                         console.error("Error writing document: ", error);
