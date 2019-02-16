@@ -1,12 +1,11 @@
 function parseCourses() {
 
-
-
     let dataFile = require('./whitingSchoolOfEngineering.json');
     console.log(dataFile[0].Status);
 
     console.log("array length is: " + dataFile.length);
 
+    var app = firebase.initializeApp(config);
     var db = firebase.firestore(app);
 
 // Add a new document in collection "courses"
