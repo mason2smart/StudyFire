@@ -5,7 +5,6 @@ function parseCourses() {
     //
     // console.log("array length is: " + dataFile.length);
 
-
     var client = new XMLHttpRequest();
     client.open('GET', '/whitingSchoolOfEngineering.json');
     client.onreadystatechange = function() {
@@ -17,13 +16,14 @@ function parseCourses() {
     }
     client.send();
 
-    var app = firebase.initializeApp(config);
-    var db = firebase.firestore(app);
+
+     var db = firebase.firestore();
 
 // Add a new document in collection "courses"
-    db.collection("courses").doc("whitingSchoolOfEngineering").set({
-        name: "testName",
-        term: "testTerm"
+    db.collection("courses").doc("EN601220").set({
+        courseName: "Intermediate Progamming",
+        courseNumber: "EN601220",
+        courseTerm: "testTerm"
     })
         .then(function() {
             console.log("Document successfully written!");
@@ -32,7 +32,31 @@ function parseCourses() {
             console.error("Error writing document: ", error);
         });
 
+    // db.collection("courses").add({
+    //     name: "testName",
+    //     term: "testTerm"
+    // })
+    //     .then(function(docRef) {
+    //         console.log("Document written with ID: ", docRef.id);
+    //     })
+    //     .catch(function(error) {
+    //         console.error("Error adding document: ", error);
+    //     });
+
+
+
+
 }
 
+// var database = firebase.database();
+//
+// function writeCourseData(courseID, title, term) {
+//     firebase.database().ref('courses/' + courseID).set({
+//         courseNumber: courseID,
+//         courseName: title,
+//         courseTerm: term
+//     });
+// }
 
 parseCourses();
+//writeCourseData("EN601220", "Intermediate Programming", "Spring2019");
