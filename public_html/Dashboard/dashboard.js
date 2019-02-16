@@ -31,7 +31,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 		email = null;
 		displayName = null;
 		docPath = null;
-		window.location.replace('../');
+		//window.location.replace('../');
 	}
 });
 
@@ -92,7 +92,7 @@ function dispUserInfo() { //can be called agian to update user info
 			//gender = "Female";
 		//}
 		//uName.innerText = displayName;  //displays configured USERNAME -- Not stored in firestore
-		flName.innerText = fName + " " + lName + "  |  " + college;
+		flName.innerHTML = fName + " " + lName + '  <font class="materialize-red-text">|</font>  ' + college;
 		eMail.innerText = email;
 			if (hasProfPic != null){
 		previewProfPic(); }

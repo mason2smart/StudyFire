@@ -86,3 +86,12 @@ span .profpic {
     -moz-animation-delay: 0.7s ;
     animation-delay: 0.7s;
 }
+
+   .input-field input[type=text] label {
+     color: #000;
+}
+/* label underline focus color */
+   .input-field input[type=text] {
+     border-bottom: 1px solid white;
+     box-shadow: 0 1px 0 0 white;
+   }
