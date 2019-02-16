@@ -25,7 +25,7 @@
   firebase.initializeApp(config);
 </script>
 <!------Firebase Auth------>
-	<script src="Firebase/auth.js"></script>
+	<script src="index.js"></script>
 	
 </head>
 <body>
@@ -41,20 +41,70 @@
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>-->
     </div>
   </nav>
+	
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
       <h1 class="header center orange-text"><font class="blue-grey-text">Study</font><font class="materialize-red-text">Fire</font></h1>
-      <div class="row center">
-        <h5 class="header col s12 light"></h5>
-      </div>
-      <div class="row center" id="login-btn">
-        <a href="#" id="download-button" class="btn-large waves-effect waves-light orange" onclick="showLoginForm()">Sign-Up/Login</a>
-      </div>
-
-      <br><br>
-<!-----LOGIN DIV---->
-	  <div style="display:none;" id="UserPower">
+		 <div class="row">
+    <div class="col s9 offset-s2 m8 offset-m2 l7 offset-l4">
+      <ul class="tabs">
+        <li class="tab col s3 m3 l3">
+			<a class="active" href="#signup">SIGN UP</a></li>
+		  <li class="col s2 m2 l2 tab is-disabled" style="margin: 0px;">OR</li>
+        <li class="tab col s3 m3 l3">
+			<a href="#login">LOGIN</a></li>
+      </ul>
+		</div>
+    <div id="signup" class="col s12"><div class="row">
+        <form id="register" class="col s12">
+          <div class="row">
+            <div class="input-field col s6"> <i id="validRegUsr" class="material-icons prefix">account_circle</i>
+              <input id="first-name" type="text" class="validate">
+              <label for="first-name">First Name</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="last-name" type="text" class="validate">
+              <label for="last-name">Last Name</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6"> <i id="validRegEmail" class="material-icons prefix">email</i>
+              <input id="regEmail" type="email" class="validate">
+              <label for="regEmail">Email</label>
+              <span class="helper-text" data-error="Invalid Email" data-success=""></span> </div>
+            <div class="input-field col s6">
+              <input id="validate-regEmail" type="email" class="validate">
+              <label for="validate-regEmail">Validate Email</label>
+              <span class="helper-text" data-error="Invalid Email" data-success=""></span> </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6"> <i id="validRegPass" class="material-icons prefix">lock</i>
+              <input id="regPassword" type="password" class="validate">
+              <label for="regPassword">Password</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="validate-regPassword" type="password" class="validate">
+              <label for="validate-regPassword">Validate Password</label>
+            </div>
+          </div>
+			<div class="row">
+			  <div class="input-field col s12 m6 offset-m3">
+			 <select id="select-college" class="icons">
+      <!--<option value="0" disabled selected>Select College</option>-->
+				 <option data-icon="./Images/jhuIcon.png" value="jhu" selected>Johns Hopkins University</option>
+				 </select>
+			 <label>College</label>
+				 </div></div>
+        </form>
+        <!--could also use an event listener--->
+        <center>
+          <a href="#" id="signup-button" class="btn-large waves-effect waves-light materialize-red" onClick="addUser()"><strong>Register</strong></a>
+		</center></div></div>
+			 
+			 
+			 
+	<div id="login" class="col s12"><div id="UserPower">
 		<div class="row">
     <form class="col s12">
       <div class="row">
@@ -69,9 +119,14 @@
         </div>
       </div>
     </form>
+		 <center>
+          <a href="#" id="login-button" class="btn-large waves-effect waves-light materialize-red" onClick="submitCreds()"><strong>LOGIN</strong></a>
+		</center></div>
+      <!--<div class="row center" id="login-btn"> 
+        <a href="#" id="download-button" class="btn-large waves-effect waves-light orange" onclick="showLoginForm()">Sign-Up/Login</a>-->
+      <br><br>
+	  
 	<!--could also use an event listener--->
-	<a href="#" id="login-button" class="btn-small waves-effect waves-light orange" onclick="submitCreds()">Login</a>
-    <a href="#" id="signup-button" class="btn-small waves-effect waves-light orange" onclick="addUser()">Signup</a>
   </div>
 		</div>
 		<div style="display:none;" id="UserPowerOff">
@@ -79,6 +134,7 @@
 		</div>
 	  
   </div>
+	</div>
 	</div>
 
 
@@ -139,6 +195,14 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="Materialize/js/materialize.js"></script>
   <script src="Materialize/js/init.js"></script>
+	<script>  $(document).ready(function(){
+    $('.tabs').tabs();
+  });</script>
+	<script>
+		 $(document).ready(function(){
+    $('select').formSelect();
+  });
+	</script>
 
   </body>
 </html>
