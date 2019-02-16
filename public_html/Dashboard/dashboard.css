@@ -87,11 +87,21 @@ span .profpic {
     animation-delay: 0.7s;
 }
 
-   .input-field input[type=text] label {
-     color: #000;
+.input-field input[type=text] + label, .materialize-textarea:focus:not([readonly]) + label {
+ color: white !important;
 }
-/* label underline focus color */
-   .input-field input[type=text] {
-     border-bottom: 1px solid white;
-     box-shadow: 0 1px 0 0 white;
-   }
+
+.input-field input[type=text], .materialize-textarea:focus:not([readonly]) {
+ border-bottom: 1px solid white !important;
+ box-shadow: 0 1px 0 0 white !important;
+}
+
+
+.input-field input[type=text]:focus + label, .materialize-textarea:focus:not([readonly]) + label {
+ color: #b71c1c !important;
+}
+
+.input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
+ border-bottom: 1px solid #b71c1c !important;
+ box-shadow: 0 1px 0 0 #b71c1c !important;
+}
