@@ -20,9 +20,9 @@ function parseCourses() {
      var db = firebase.firestore();
 
 // Add a new document in collection "courses"
-    for (i = 0; i < myObj.length; i++) {
-        db.collection("college").doc("JHU").collection("semester").doc(myObj.Term).collection("class").doc(myObj.OfferingName).set({
-            // courseName: "Intermediate Progamming",
+    for (i = 0; i < 5; i++) {
+        db.collection("college").doc("JHU").collection("semester").doc(myObj[i].Term).collection("class").doc(myObj[i].OfferingName).set({
+            courseName: myObj[i].Title
             // courseNumber: "EN601220",
             // courseTerm: "testTerm"
         })
