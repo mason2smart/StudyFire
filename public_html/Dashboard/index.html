@@ -7,8 +7,8 @@
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="Materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="Materialize/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../Materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../Materialize/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	
 <!---------INIT FIREBASE--------->
 <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase.js"></script>
@@ -25,7 +25,6 @@
   firebase.initializeApp(config);
 </script>
 <!------Firebase Auth------>
-	<script src="index.js"></script>
 	
 </head>
 <body>
@@ -188,8 +187,8 @@
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="Materialize/js/materialize.js"></script>
-  <script src="Materialize/js/init.js"></script>
+  <script src="../Materialize/js/materialize.js"></script>
+  <script src="../Materialize/js/init.js"></script>
 	<script>  $(document).ready(function(){
     $('.tabs').tabs();
   });</script>
@@ -198,6 +197,7 @@
     $('select').formSelect();
   });
 	</script>
+	<script src="index.js"></script>
 
   </body>
 </html>
