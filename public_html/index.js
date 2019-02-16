@@ -178,19 +178,6 @@ async function submitNewUserData() {
 	}
 }
 
-
-
-function logOff(){
-firebase.auth().signOut().then(function() {
-  // Sign-out successful.
-}).catch(function(error) {
-  // An error happened.
-		//materialize toast
-	M.toast({html: error.message});
-});
-		showLoginBtn();
-}
-
 //Log to local console
 function consoleLog(name){
   console.log(name);
