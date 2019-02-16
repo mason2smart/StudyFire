@@ -10,30 +10,34 @@ function parseCourses() {
     client.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var myObj = JSON.parse(this.responseText);
-            console.log("arr length" + myObj.length);
-            console.log(myObj[0].Title);
+            console.log("testing 5 items \n");
+
+
+
+            var db = firebase.firestore();
+
+// Add a new document in collection "courses"
+            for (i = 0; i < 5; i++) {
+                db.collection("college").doc("JHU").collection("semester").doc(myObj[i].Term).collection("class").doc(myObj[i].OfferingName).set({
+                    courseName: myObj[i].Title
+                    // courseNumber: "EN601220",
+                    // courseTerm: "testTerm"
+                })
+                    .then(function() {
+                        console.log("Document successfully written!");
+                    })
+                    .catch(function(error) {
+                        console.error("Error writing document: ", error);
+                    });
+
+            }
+
         }
     }
     client.send();
 
 
-     var db = firebase.firestore();
 
-// Add a new document in collection "courses"
-    for (i = 0; i < 5; i++) {
-        db.collection("college").doc("JHU").collection("semester").doc(myObj[i].Term).collection("class").doc(myObj[i].OfferingName).set({
-            courseName: myObj[i].Title
-            // courseNumber: "EN601220",
-            // courseTerm: "testTerm"
-        })
-            .then(function() {
-                console.log("Document successfully written!");
-            })
-            .catch(function(error) {
-                console.error("Error writing document: ", error);
-            });
-
-    }
 
 
     // db.collection("courses").add({
