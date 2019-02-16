@@ -20,17 +20,21 @@ function parseCourses() {
      var db = firebase.firestore();
 
 // Add a new document in collection "courses"
-    db.collection("courses").doc("EN601220").set({
-        courseName: "Intermediate Progamming",
-        courseNumber: "EN601220",
-        courseTerm: "testTerm"
-    })
-        .then(function() {
-            console.log("Document successfully written!");
+    for (i = 0; i < myObj.length; i++) {
+        db.collection("college").doc("JHU").collection("semester").doc(myObj.Term).collection("class").doc(myObj.OfferingName).set({
+            // courseName: "Intermediate Progamming",
+            // courseNumber: "EN601220",
+            // courseTerm: "testTerm"
         })
-        .catch(function(error) {
-            console.error("Error writing document: ", error);
-        });
+            .then(function() {
+                console.log("Document successfully written!");
+            })
+            .catch(function(error) {
+                console.error("Error writing document: ", error);
+            });
+
+    }
+
 
     // db.collection("courses").add({
     //     name: "testName",
