@@ -2,6 +2,10 @@ function consoleLog(name) {
 	console.log(name);
 }
 
+//initialize dropdown form
+		 $(document).ready(function(){
+    $('select').formSelect();
+  });
 
 var uid;
 var displayName;
@@ -37,7 +41,30 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 
 
+//querysearch
+var currSemester = $('#select-semester').val();
+function querySearch() {
+	var currSemester = $('select-semester').val(); //change in input rerun
+	var currClass = $('class-search').val();
+	college/{school}/semester/{semester}/class/{class
+												
+												
+	if(currClass!=null && currClass.length > 4){
+	var queryRef = firebase.database().ref("college").doc(college).collection(semester).doc(currSemester).collection(class);							
+	}
+}
 
+$(document).ready(function () {
+	$('#class-form').on('change', function () {
+		querySearch();
+	})
+//	$('#register select').on('change', function () {
+//		regFormVeri();
+//	})
+	$('#class-form').on('keyup', function () {
+		querySearch();
+	})
+});
 
 
 
@@ -66,16 +93,13 @@ function previewProfPic() {
 	console.log('downloaded profpic');
 });}
 
-
-
-
 //------FIRESTORE-------
 var firestore = firebase.firestore();
 
+	var college;
 function dispUserInfo() { //can be called agian to update user info
 	var fName;
 	var lName;
-	var college;
 	var hasProfPic = Boolean(false);
 	firestore.collection('users').doc(uid).get().then(function (doc) {
 		if (doc.exists) {
