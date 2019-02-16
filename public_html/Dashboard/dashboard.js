@@ -75,12 +75,14 @@ var firestore = firebase.firestore();
 function dispUserInfo() { //can be called agian to update user info
 	var fName;
 	var lName;
+	var college;
 	var hasProfPic = Boolean(false);
 	firestore.collection('users').doc(uid).get().then(function (doc) {
 		if (doc.exists) {
 			var data = doc.data();
 			fName = data.fName;
 			lName = data.lName;
+			college = data.college;
 			//gender = data.gender; maybe add option later
 			hasProfPic = data.profPic;
 		}
@@ -90,7 +92,7 @@ function dispUserInfo() { //can be called agian to update user info
 			//gender = "Female";
 		//}
 		//uName.innerText = displayName;  //displays configured USERNAME -- Not stored in firestore
-		flName.innerText = fName + " " + lName;
+		flName.innerText = fName + " " + lName + "  |  " + college.toUpperCase();
 		eMail.innerText = email;
 			if (hasProfPic != null){
 		previewProfPic(); }
