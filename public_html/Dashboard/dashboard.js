@@ -46,11 +46,14 @@ var currSemester = $('#select-semester').val();
 function querySearch() {
 	var currSemester = $('select-semester').val(); //change in input rerun
 	var currClass = $('class-search').val();
-	college/{school}/semester/{semester}/class/{class
+	//college/{school}/semester/{semester}/class/{class
 												
 												
 	if(currClass!=null && currClass.length > 4){
-	var queryRef = firebase.database().ref("college").doc(college).collection(semester).doc(currSemester).collection(class);							
+	var queryRef = firebase.database().ref("college").doc(college).collection(semester).doc(currSemester).collection(class);
+	queryRef.orderByChild("class").equalTo(currClass).on("child_added", function(snapshot) {
+		console.log(snapshot.key);
+	});
 	}
 }
 
