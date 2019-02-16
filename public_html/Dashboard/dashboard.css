@@ -1,0 +1,88 @@
+/* CSS Document */
+
+@media (min-width: 768px) {
+body {
+    flex-direction: row;
+    justify-content: center;
+}
+}
+.img-profpic {
+    border-radius: 100%;
+    color: #fafafa;
+    display: flex;
+    flex: 0 0 200px;
+    height: 200px;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    width: 200px;
+}
+.img__overlay {
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: opacity 0.25s;
+    z-index: 1;
+    overflow: hidden;
+}
+.img__overlay:hover {
+    opacity: 1;
+}
+/**
+  * Theming
+*/
+span .profpic {
+    bottom: 0;
+    font-size: 24px;
+    left: 0;
+    line-height: 200px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.img-profpic {
+    -webkit-animation: fadeIn 0.5s;
+    animation: fadeIn 0.5s;
+    border: 4px solid #c0c0c0;
+    margin: 20px;
+}
+.img__overlay {
+    background-color: rgba(46,204,113,0.4);
+    background: linear-gradient(65deg, rgba(46,204,113,0.4), rgba(243,156,18,0.4));
+    color: #fafafa;
+    font-size: 24px;
+}
+.img__overlay--green {
+    background: linear-gradient(65deg, rgba(46,204,113,0.4), rgba(102,51,153,0.4) 60%);
+    background-color: rgba(46,204,113,0.4);
+}
+.img__overlay--yellow {
+    background: linear-gradient(65deg, rgba(243,156,18,0.4), rgba(102,51,153,0.4) 60%);
+    background-color: rgba(243,156,18,0.4);
+}
+.img__overlay--red {
+    background: linear-gradient(65deg, rgba(217,30,24,0.4), rgba(102,51,153,0.4) 60%);
+    background-color: rgba(217,30,24,0.4);
+}
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0;  } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fade-in {
+    opacity:0;  /* make things invisible upon start */
+    -webkit-animation:fadeIn 1s ease-in 0s 1 normal forwards;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+    -moz-animation:fadeIn 1s ease-in 0s 1 normal forwards;
+    animation:fadeIn 1s ease-in 0s 1 normal forwards;
+}
+
+.fade-in.one {
+    -webkit-animation-delay: 0.7s ;
+    -moz-animation-delay: 0.7s ;
+    animation-delay: 0.7s;
+}

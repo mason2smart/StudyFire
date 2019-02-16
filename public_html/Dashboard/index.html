@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>StudyFire</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+<title>StudyFire</title>
 
-  <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="../Materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="../Materialize/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-	
+<!-- CSS  -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="../Materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+<link href="../Materialize/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+<link href="./dashboard.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
 <!---------INIT FIREBASE--------->
 <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase.js"></script>
 <script>
@@ -26,96 +27,106 @@
 </script>
 <!------Firebase Auth------>
 </head>
-<body>
-  <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><font class="blue-grey-text text-lighten-5">Study</font><font class="materialize-red-text">Fire</font></a>
-      <ul class="right center materialize-red" style="vertical-align:middle" >
-        <li><a href="#" onClick="logOff()">LOGOUT</a></li>
-      </ul>
-
-     <!-- <ul id="nav-mobile" class="sidenav">
+<body class="fade-in">
+<nav class="light-blue lighten-1" role="navigation">
+  <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><font class="blue-grey-text text-lighten-5">Study</font><font class="materialize-red-text">Fire</font></a>
+    <ul class="right center materialize-red" style="vertical-align:middle" >
+      <li><a href="#" onClick="logOff()">LOGOUT</a></li>
+    </ul>
+    
+    <!-- <ul id="nav-mobile" class="sidenav">
         <li><a href="#">Navbar Link</a></li>
       </ul>
-      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>-->
-    </div>
-  </nav>
-	
-  <div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-      <br><br>
-      <h1 class="header center orange-text"><font class="blue-grey-text">Study</font><font class="materialize-red-text">Fire</font></h1>
-		 <div class="row">
-     </div>
-		</div>	  
-	</div>
-
-
-  <div class="container">
-    <div class="section">
-
-      <!--   Icon Section   -->
-      <div class="row">
-
-		  
-		          <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">Add Classes</h5>
-          </div>
-        </div>
-      
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">Form Group</h5>
-          </div>
-        </div>
-		 <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">whatshot</i></h2>
-            <h5 class="center">Feed the Fire</h5>
-          </div>
-        </div>
-    </div></div>
-    <br><br>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>--> 
   </div>
-
-  <footer class="page-footer orange">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">About Us</h5>
-          <p class="grey-text text-lighten-4">About us</p>
+</nav>
+		<!--<div class="section no-pad-bot" id="index-banner">
+  <div class="container"> -->
+<div class="container">
+  <div class="section"> 
+	<div id="dashboard-main" class="grey lighten-2">
+  <center>
+    <div class="row" style="vertical-align: middle; margin-top: 0;">
+      <div class="col s12">
+		  <h2 style="margin:0; vertical-align: middle"><font class="materialize-red-text">Fire</font><font class="blue-grey-text">Board</font></h2>
+      </div>
+      <div class="col s12" style="margin-bottom: 0; padding-bottom: 0; overflow: hidden;"> <a id="profpicLink" class="img-profpic" href="../Profile/index.html"> 
+        <!-- link to edit info page-->
+        <div class="img__overlay img__overlay--red">Edit Profile</div>
+        <img id="profPic" style="width: 200px; margin-bottom: 0;" class="circle responsive-img" alt="profile pic" src="../Images/DefaultUser.jpg"></a> </div>
+      <div class="col s12 blue-text" style="padding-top: 0px; margin-top:0px;"> 
+		  
+		  <!-- ----User Information---- -->
+        <h4 id="flName" style="padding-top: 0; margin-top: 0; margin-bottom: 25px">John Doe</h4>
+        <h5 id="eMail" style = "display: none">Email</h5>
+      </div>
+      </div>
+  </center>
+</div>
+	</div>
+	</div>
+	
+	
+<div class="container">
+  <div class="section"> 
+    
+    <!--   Icon Section   -->
+    <div class="row">
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
+          <h5 class="center">Add Classes</h5>
         </div>
-<div class="col l3 s12">
-  <h5 class="white-text">Contact</h5>
-  <ul>
+      </div>
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+          <h5 class="center">Form Group</h5>
+        </div>
+      </div>
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="center light-blue-text"><i class="material-icons">whatshot</i></h2>
+          <h5 class="center">Feed the Fire</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+</div>
+<footer class="page-footer orange">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">About Us</h5>
+        <p class="grey-text text-lighten-4">About us</p>
+      </div>
+      <div class="col l3 s12">
+        <h5 class="white-text">Contact</h5>
+        <ul>
           <li><a class="white-text" href="#!">Link 1</a></li>
-          </ul>
-        </div>
+        </ul>
       </div>
     </div>
-    <div class="footer-copyright">
-      <div class="container">
-      </div>
-    </div>
-  </footer>
+  </div>
+  <div class="footer-copyright">
+    <div class="container"> </div>
+  </div>
+</footer>
 
-
-  <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="../Materialize/js/materialize.js"></script>
-  <script src="../Materialize/js/init.js"></script>
-	<script>  $(document).ready(function(){
+<!--  Scripts--> 
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> 
+<script src="../Materialize/js/materialize.js"></script> 
+<script src="../Materialize/js/init.js"></script> 
+<script>  $(document).ready(function(){
     $('.tabs').tabs();
-  });</script>
-	<script>
+  });</script> 
+<script>
 		 $(document).ready(function(){
     $('select').formSelect();
   });
-	</script>
-	<script src="./dashboard.js"></script>
-
-  </body>
+	</script> 
+<script src="./dashboard.js"></script>
+</body>
 </html>
