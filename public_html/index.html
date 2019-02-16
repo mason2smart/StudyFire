@@ -1,65 +1,144 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>StudyFire</title>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/5.8.3/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/5.8.3/firebase-auth.js"></script>
-    <script defer src="/__/firebase/5.8.3/firebase-database.js"></script>
-    <script defer src="/__/firebase/5.8.3/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/5.8.3/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="Materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="Materialize/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+	
+<!---------INIT FIREBASE--------->
+<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA98xwV_OQLQDHLEPNx2eoXqEz47dvBPEY",
+    authDomain: "studyfire-hop.firebaseapp.com",
+    databaseURL: "https://studyfire-hop.firebaseio.com",
+    projectId: "studyfire-hop",
+    storageBucket: "studyfire-hop.appspot.com",
+    messagingSenderId: "705052458838"
+  };
+  firebase.initializeApp(config);
+</script>
+<!------Firebase Auth------>
+	<script src="Firebase/auth.js"></script>
+	
+</head>
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">StudyFire</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+     <!-- <ul id="nav-mobile" class="sidenav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>-->
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+  </nav>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">StudyFire</h1>
+      <div class="row center">
+        <h5 class="header col s12 light"></h5>
+      </div>
+      <div class="row center" id="login-btn">
+        <a href="#" id="download-button" class="btn-large waves-effect waves-light orange" onclick="showLoginForm()">Sign-Up/Login</a>
+      </div>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+      <br><br>
+<!-----LOGIN DIV---->
+	  <div style="display:none;" id="UserPower">
+		<div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="email" type="text" class="validate">
+          <label for="email">Email</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="password" type="text" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
+    </form>
+	<!--could also use an event listener--->
+	<a href="#" id="login-button" class="btn-small waves-effect waves-light orange" onclick="submitCreds()">Login</a>
+    <a href="#" id="signup-button" class="btn-small waves-effect waves-light orange" onclick="addUser()">Signup</a>
+  </div>
+		</div>
+		<div style="display:none;" id="UserPowerOff">
+			<a href="#" id="Logoff" class="btn-small waves-effect waves-light orange" onclick="showLogin()">Login</a>
+		</div>
+	  
+  </div>
+	</div>
 
-        try {
-          let app = firebase.app();
-          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+
+		  
+		          <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
+            <h5 class="center">Add Classes</h5>
+          </div>
+        </div>
+      </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+            <h5 class="center">Form Group</h5>
+          </div>
+        </div>
+		 <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">whatshot</i></h2>
+            <h5 class="center">Feed the Fire</h5>
+          </div>
+        </div>
+    </div>
+    <br><br>
+  </div>
+
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">About Us</h5>
+          <p class="grey-text text-lighten-4">About us</p>
+        </div>
+<div class="col l3 s12">
+  <h5 class="white-text">Contact</h5>
+  <ul>
+          <li><a class="white-text" href="#!">Link 1</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="Materialize/js/materialize.js"></script>
+  <script src="Materialize/js/init.js"></script>
+
   </body>
 </html>
