@@ -99,6 +99,14 @@ function dispUserInfo() { //can be called agian to update user info
 	})
 }
 
+function previewProfPic() {
+	var storageRef = firebase.storage().ref(uid + '/images/'); 
+	var profpicRef = storageRef.child('profPic');
+	profpicRef.getDownloadURL().then(function(url) {
+	profPic.src = url;
+	console.log('downloaded profpic');
+});}
+
 
 //------------FILE UPLOAD FUNCTION--------------
 $(document).ready(function () {
