@@ -50,7 +50,7 @@ function querySearch() {
 												
 												
 	if(currClass!=null && currClass.length > 4){
-	var queryRef = firebase.database().ref("college").doc(college).collection(semester).doc(currSemester).collection(class);
+	var queryRef = firebase.database().ref("college").doc(college).collection(semester).doc(currSemester).collection("class");
 	queryRef.orderByChild("class").equalTo(currClass).on("child_added", function(snapshot) {
 		console.log(snapshot.key);
 	});
