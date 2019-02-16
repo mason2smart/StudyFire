@@ -98,10 +98,10 @@ span .profpic {
 
 
 .input-field input[type=text]:focus + label, .materialize-textarea:focus:not([readonly]) + label {
- color: #b71c1c !important;
+ color: lightblue !important;
 }
 
 .input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
- border-bottom: 1px solid #b71c1c !important;
- box-shadow: 0 1px 0 0 #b71c1c !important;
+ border-bottom: 1px solid lightblue !important;
+ box-shadow: 0 1px 0 0 lightblue !important;
 }
