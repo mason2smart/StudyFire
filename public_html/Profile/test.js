@@ -56,19 +56,6 @@ function consoleLog(name){
   console.log(name);
 }
 
-
-//display profile pic if exists
-function previewProfPic() {
-	var storageRef = firebase.storage().ref(uid + '/images/'); 
-	var profpicRef = storageRef.child('profPic');
-	profpicRef.getDownloadURL().then(function(url) {
-	profPic.src = url;
-	console.log('downloaded profpic');
-});}
-
-
-
-
 //------FIRESTORE-------
 var firestore = firebase.firestore();
 
@@ -98,7 +85,7 @@ function dispUserInfo() { //can be called agian to update user info
 		previewProfPic(); }
 	})
 }
-
+//display profile pic if exists
 function previewProfPic() {
 	var storageRef = firebase.storage().ref(uid + '/images/'); 
 	var profpicRef = storageRef.child('profPic');
