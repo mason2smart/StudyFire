@@ -84,7 +84,7 @@ function dispUserInfo() { //can be called agian to update user info
 			lName = data.lName;
 			college = data.college;
 			//gender = data.gender; maybe add option later
-			hasProfPic = data.profPic;
+			hasProfPic = data.profPic; 
 		}
 		//if (gender == "M") {
 			//gender = "Male";
@@ -92,7 +92,7 @@ function dispUserInfo() { //can be called agian to update user info
 			//gender = "Female";
 		//}
 		//uName.innerText = displayName;  //displays configured USERNAME -- Not stored in firestore
-		flName.innerText = fName + " " + lName + "  |  " + college.toUpperCase();
+		flName.innerText = fName + " " + lName + "  |  " + college;
 		eMail.innerText = email;
 			if (hasProfPic != null){
 		previewProfPic(); }
