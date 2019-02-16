@@ -6,7 +6,7 @@ function parseCourses() {
     // console.log("array length is: " + dataFile.length);
 
     var client = new XMLHttpRequest();
-    client.open('GET', '/whitingSchoolOfEngineering.json');
+    client.open('GET', './whitingSchoolOfEngineering.json');
     client.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var myObj = JSON.parse(this.responseText);
