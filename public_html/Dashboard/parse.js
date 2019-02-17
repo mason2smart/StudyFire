@@ -33,13 +33,13 @@ function parseCourses() {
                             .catch(function (error) {
                                 console.error("Error writing document: ", error);
                             });
-                    }
+                    } });
                     //
                     // db.collection("college").doc("JHU").collection("semester").doc(courseEntries[i].Term).collection("class").doc(courseEntries[i].OfferingName).set({
                     //     courseName: courseEntries[i].Title
                     // })
 
-                });
+                }
         }
     }
     client.send();
