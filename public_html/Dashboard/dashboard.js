@@ -148,23 +148,32 @@ function addCourse() {
     var path = "college/JHU/Spring 2019/class/" + courseNumber + "/" + str + "/";
     var user = firebase.auth().currentUser;
 
-
     db.collection("users").doc(uid).set({
-        courseList: [path]
+        coursePath: path
     }, {merge: true});
-	
+
     // db.collection("users").doc(uid).update({
     //             courseList: firebase.firestore().FieldValue.arrayUnion(path)
     //         });
 
 
-
     var studentMap = {studentID: uid , studentName: user.displayName};
     console.log(studentMap);
 
-    db.collection("college").doc("JHU").collection("semester").doc("Spring 2019").collection("class").doc(courseNumber).update({
-        studentList: firebase.firestore().FieldValue.arrayUnion(studentMap)
-    });
+    db.collection("college").doc("JHU").collection("semester").doc("Spring 2019").collection("class").doc(courseNumber).set({
+        studentMap: studentMap
+    }, {merge: true});
+}
+
+
+function displayCourse(studentID) {
+    db.collection("users").doc(studentID)
+
+}
+
+
+function displayStudent() {
+
 }
 
 
