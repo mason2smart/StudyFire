@@ -153,7 +153,8 @@ function addCourse() {
                 courseList: firebase.firestore.FieldValue.arrayUnion(path)
             });
 
-    var studentMap = {studentID: user.uid , studentName: user.fName + " " + user.lName};
+    var studentMap =
+        ({studentID: user.uid , studentName: user.fName + " " + user.lName});
     classQuery.get().then(function(addStudentList) {
         addStudentList.forEach(function(doc) {
             doc.update({
