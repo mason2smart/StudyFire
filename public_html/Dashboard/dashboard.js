@@ -159,6 +159,8 @@ function addCourse() {
             doc.update({
                 studentList: firebase.firestore.FieldValue.arrayUnion(studentMap)
             });
+        }).catch(function(error) {
+            console.log("Error getting documents: ", error);
         });
 }
 
