@@ -136,26 +136,25 @@ function addCourse() {
     var str = document.getElementById('autocomplete-input').value
     document.getElementById('autocomplete-input').value = "";
 
-    var classQuery = db.collection("college").doc("JHU").collection("semester").doc(termVar).collection("class").where("courseName", "==", str);
 
-    classQuery.get().then(function (doc) {
-        if (doc.exists) {
-            var user = firebase.auth().currentUser;
-        db.collection("users").doc(user.uid).update({
-            courseList: firebase.firestore.FieldValue.arrayUnion(classQuery)
+    // test1
+    console.log("test: class name is" + str);
+
+    var classQuery = db.collection("college").doc("JHU").collection("semester").doc("Spring 2019").collection("class").where("courseName", "==", str);
+    var courseNumber;
+    classQuery.get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+        courseNumber = doc.id;
+        });
+    }).catch(function(error) {
+            console.log("Error getting documents: ", error);
         });
 
-            console.log("class path is " + classQuery);
-
-        }
-        }).catch((fail) => {
-            console.log(fail);
-        });
-
-
-
-
-
+    var path = "college/JHU/Spring 2019/class/" + courseNumber + "/" + str + "/";
+    var user = firebase.auth().currentUser;
+    db.collection("users").doc(user.uid).update({
+                courseList: firebase.firestore.FieldValue.arrayUnion(path)
+            });
 }
 
 
