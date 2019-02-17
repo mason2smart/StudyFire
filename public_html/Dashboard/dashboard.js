@@ -153,17 +153,13 @@ function addCourse() {
                 courseList: firebase.firestore.FieldValue.arrayUnion(path)
             });
 
-    var studentMap =
-        ({studentID: user.uid , studentName: user.fName + " " + user.lName});
-    classQuery.get().then(function(addStudentList) {
-        addStudentList.forEach(function (doc) {
-            doc.update({
-                studentList: firebase.firestore.FieldValue.arrayUnion(studentMap)
-            });
-        }).catch(function (error) {
-            console.log("Error getting documents: ", error);
-        });
 
+
+    var studentMap = {studentID: user.uid , studentName: user.displayName};
+    console.log(studentMap);
+
+    db.collection("college").doc("JHU").collection("semester").doc("Spring 2019").collection("class").doc(courseNumber).update({
+        studentList: firebase.firestore.FieldValue.arrayUnion(studentMap)
     });
 }
 
