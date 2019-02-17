@@ -136,10 +136,6 @@ function addCourse() {
     var str = document.getElementById('autocomplete-input').value
     document.getElementById('autocomplete-input').value = "";
 
-
-    // test1
-    console.log("test: class name is" + str);
-
     var classQuery = db.collection("college").doc("JHU").collection("semester").doc("Spring 2019").collection("class").where("courseName", "==", str);
     var courseNumber;
     classQuery.get().then(function(querySnapshot) {
@@ -152,11 +148,21 @@ function addCourse() {
 
     var path = "college/JHU/Spring 2019/class/" + courseNumber + "/" + str + "/";
     var user = firebase.auth().currentUser;
+
     db.collection("users").doc(user.uid).update({
                 courseList: firebase.firestore.FieldValue.arrayUnion(path)
             });
-}
 
+    var studentMap = {studentID: user.uid , studentName: user.fName + " " + user.lName};
+    classQuery.get().then(function(addStudentList) {
+        addStudentList.forEach(function(doc) {
+            doc.update({
+                studentList: firebase.firestore.FieldValue.arrayUnion(studentMap)
+            });
+        }).catch(function(error) {
+            console.log("Error getting documents: ", error);
+        });
+}
 
 
 $(document).ready(function(){
