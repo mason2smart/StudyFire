@@ -148,11 +148,14 @@ function addCourse() {
     var path = "college/JHU/Spring 2019/class/" + courseNumber + "/" + str + "/";
     var user = firebase.auth().currentUser;
 
+
+    db.collection("users").doc(uid).set({
+        courseList: [path]
+    }, {merge: true});
 	
-	
-    db.collection("users").doc(uid).update({
-                courseList: firebase.firestore().FieldValue.arrayUnion(path)
-            });
+    // db.collection("users").doc(uid).update({
+    //             courseList: firebase.firestore().FieldValue.arrayUnion(path)
+    //         });
 
 
 
