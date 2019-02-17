@@ -14,7 +14,9 @@ function parseCourses() {
                 db.collection('college').doc("JHU").collection("semester").doc(courseEntries[i].Term)
                     .collection("class").doc(courseEntries[i].OfferingName).get().then(function (doc) {
                     if (doc.exists) {
+					doc.update({
                         courseName: courseEntries[i].Title
+					})
                             .then(function () {
                                 console.log("Document successfully updated!" + i);
                             })
