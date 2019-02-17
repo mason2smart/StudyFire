@@ -156,13 +156,15 @@ function addCourse() {
     var studentMap =
         ({studentID: user.uid , studentName: user.fName + " " + user.lName});
     classQuery.get().then(function(addStudentList) {
-        addStudentList.forEach(function(doc) {
+        addStudentList.forEach(function (doc) {
             doc.update({
                 studentList: firebase.firestore.FieldValue.arrayUnion(studentMap)
             });
-        }).catch(function(error) {
+        }).catch(function (error) {
             console.log("Error getting documents: ", error);
         });
+
+    });
 }
 
 
