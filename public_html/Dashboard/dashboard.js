@@ -38,7 +38,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 		email = null;
 		displayName = null;
 		docPath = null;
-		//window.location.replace('../');
+		window.location.replace('../');
 	}
 });
 
@@ -160,7 +160,7 @@ function addCourse() {
     var studentMap = {studentID: uid , studentName: user.displayName};
     console.log(studentMap);
 
-    db.collection("college").doc("JHU").collection("semester").doc("Spring 2019").collection("class").doc(courseNumber).set({
+    db.collection("college").doc("JHU").collection("semester").doc("Spring 2019").collection("class").doc(courseNumber).update({
         studentMap: studentMap
     }, {merge: true});
 }
