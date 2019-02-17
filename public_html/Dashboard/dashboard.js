@@ -136,10 +136,27 @@ function addCourse() {
     var str = document.getElementById('autocomplete-input').value
     document.getElementById('autocomplete-input').value = "";
 
+    var classQuery = db.collection("college").doc("JHU").collection("semester").doc(termVar).collection("class").where("courseName", "==", str);
+
+    classQuery.get().then(function (doc) {
+        if (doc.exists) {
+            var user = firebase.auth().currentUser;
+        db.collection("users").doc(user.uid).update({
+            courseList: firebase.firestore.FieldValue.arrayUnion(classQuery)
+        });
+
+            console.log("class path is " + classQuery);
+
+        }
+        }).catch((fail) => {
+            console.log(fail);
+        });
+
+
+
+
 
 }
-
-
 
 
 

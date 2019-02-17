@@ -41,4 +41,4 @@ function parseCourses() {
 
 
 // start parsing
-parseCourses();
+//parseCourses();
