@@ -129,7 +129,7 @@ function dispUserInfo() { //can be called agian to update user info
 	})
 }
 
-
+var courseNumber;
 var db = firebase.firestore();
 function addCourse() {
 
@@ -137,7 +137,6 @@ function addCourse() {
     document.getElementById('autocomplete-input').value = "";
 
     var classQuery = db.collection("college").doc("JHU").collection("semester").doc("Spring 2019").collection("class").where("courseName", "==", str);
-    var courseNumber;
     classQuery.get().then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
         courseNumber = doc.id;
@@ -145,21 +144,23 @@ function addCourse() {
     }).catch(function(error) {
             console.log("Error getting documents: ", error);
         });
-
+	console.log(courseNumber);
     var path = "college/JHU/Spring 2019/class/" + courseNumber + "/" + str + "/";
     var user = firebase.auth().currentUser;
 
-    db.collection("users").doc(user.uid).update({
-                courseList: firebase.firestore.FieldValue.arrayUnion(path)
+	
+	
+    db.collection("users").doc(uid).update({
+                courseList: firebase.firestore().FieldValue.arrayUnion(path)
             });
 
 
 
-    var studentMap = {studentID: user.uid , studentName: user.displayName};
+    var studentMap = {studentID: uid , studentName: user.displayName};
     console.log(studentMap);
 
     db.collection("college").doc("JHU").collection("semester").doc("Spring 2019").collection("class").doc(courseNumber).update({
-        studentList: firebase.firestore.FieldValue.arrayUnion(studentMap)
+        studentList: firebase.firestore().FieldValue.arrayUnion(studentMap)
     });
 }
 
